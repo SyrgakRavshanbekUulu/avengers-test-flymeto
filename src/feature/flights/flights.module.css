@@ -1,0 +1,18 @@
+.datapicker {
+  width: 100%;
+}
+.wrapper {
+  /* margin-top: 120px; */
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  background-color: var(--gray);
+  padding-top: 120px;
+}
+.wrapper form {
+  margin: 0 10px;
+}
+
+.wrapper button {
+  margin-top: 25px;
+}
