@@ -1,3 +1,5 @@
+// location1, location2 - rename pls
+// TODO return tyope
 export const changeLocations = (
   location1: string,
   location2: string,

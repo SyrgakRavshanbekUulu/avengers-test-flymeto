@@ -1,15 +1,17 @@
+// TODO novars
 import { Input } from 'antd';
 import { CSSProperties, ReactNode } from 'react';
 import { Controller, FieldError } from 'react-hook-form';
 import { DatePicker } from 'antd'
 import { SizeType } from 'antd/lib/config-provider/SizeContext';
 
+// TODO spaces
 
-
+// use Types
 export interface DataPickerProps {
   label?: string,
   error?: FieldError,
-  control: any,
+  control: any, // TODO remove any
   name: string,
   placeholder?: string,
   size?: SizeType,
@@ -41,6 +43,7 @@ export const DataPickerField = ({
           />
         )}
       />
+      {/* TODO no inline styles */}
       {error && <label style={{ color: 'red' }}>{error.message}</label>}
     </>
   )
