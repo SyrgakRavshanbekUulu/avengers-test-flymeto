@@ -1,5 +1,5 @@
 import { Layout } from 'antd'
-import { Flights } from '../../feature'
+import { Flights } from '..'
 import { HeaderComponent } from '../header/header'
 import styles from './layout.module.css'
 

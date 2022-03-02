@@ -1,8 +1,9 @@
 import { Control, Controller, FieldValues } from 'react-hook-form';
-import { DatePicker } from 'antd'
-import { FieldProps } from './field-types';
+import { DatePicker, DatePickerProps } from 'antd'
+import { FieldProps } from '../field-types';
+import styles from './data-picker.module.css'
 
-export type DataPickerProps = FieldProps & {
+export type DataPickerFieldProps = FieldProps & DatePickerProps & {
   control: Control<FieldValues | any>,
 }
 
@@ -10,11 +11,11 @@ export const DataPickerField = ({
   label,
   error,
   control,
-  name,
+  name = '',
   size = 'large',
   className,
   ...props
-}: DataPickerProps) => {
+}: DataPickerFieldProps) => {
   return (
     <>
       {label && <label>{label}</label>}
@@ -31,8 +32,7 @@ export const DataPickerField = ({
           />
         )}
       />
-      {/* TODO no inline styles */}
-      {error && <label style={{ color: 'red' }}>{error.message}</label>}
+      {error && <label className={styles.errorMessage}>{error.message}</label>}
     </>
   )
 }

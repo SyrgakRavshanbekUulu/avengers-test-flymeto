@@ -1,23 +1,24 @@
-import { Input } from 'antd';
+import { Input, InputProps } from 'antd';
 import { ReactNode } from 'react';
-import { Controller } from 'react-hook-form';
-import { FieldProps } from './field-types';
+import { Control, Controller, FieldValues } from 'react-hook-form';
+import { FieldProps } from '../field-types';
+import styles from './input-field.module.css'
 
-export type InputProps = FieldProps & {
+export interface InputFieldProps extends InputProps, FieldProps {
   icon?: ReactNode,
   dataList?: string[],
-  control: any,
+  control: Control<FieldValues | any>,
 }
 
 export const InputField = ({
   label,
   error,
   control,
-  name,
+  name = '',
   icon,
   dataList = [],
   size = 'large',
-  ...props }: InputProps) => {
+  ...props }: InputFieldProps) => {
   return (
     <>
       {label && <label>{label}</label>}
@@ -29,17 +30,15 @@ export const InputField = ({
             onChange={(e) => field.onChange(e)}
             value={field.value}
             prefix={icon}
-            list='data'
+            list={dataList.length > 0 ? 'data' : ''}
             size='large'
             {...props}
           />
         )}
       />
-      {/* no inline styles */}
-      {error && <label style={{ color: 'red' }}>{error.message}</label>}
+      {error && <label className={styles.errorMessage}>{error.message}</label>}
       <datalist id='data'>
-        {/* l -???? */}
-        {dataList.map((l) => <option value={l} key={l} />)}
+        {dataList.map((list) => <option value={list} key={list} />)}
       </datalist>
     </>
   )

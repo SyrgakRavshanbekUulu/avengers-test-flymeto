@@ -1,7 +1,6 @@
-import { Button, Col, Menu, Row, Space } from 'antd'
-import { GlobalOutlined, NotificationOutlined, UserOutlined } from '@ant-design/icons'
+import { Col, Menu, Row } from 'antd'
 import styles from './header.module.css'
-import Avatar from 'antd/lib/avatar/avatar'
+import { Settings } from './settings'
 
 export const HeaderComponent = (): JSX.Element => {
   const { Item } = Menu
@@ -11,7 +10,7 @@ export const HeaderComponent = (): JSX.Element => {
         FLYMETO
       </Col>
       <Col>
-        <Menu mode='horizontal' className={styles.menu}>
+        <Menu mode='horizontal' className={styles.menu} activeKey='flights'>
           <Item key='flights'>
             Flights
           </Item>
@@ -24,17 +23,7 @@ export const HeaderComponent = (): JSX.Element => {
         </Menu>
       </Col>
       <Col>
-        {/* move to component */}
-        <Space>
-          <div className={styles.language}>
-            <Button icon={<GlobalOutlined />} shape='circle' type='text' />
-            EN/ENG
-          </div>
-          <Button icon={<NotificationOutlined />} type='text' />
-          <Avatar size={32} icon={<UserOutlined />} />
-        </Space>
-        {/* no spaces */}
-
+        <Settings />
       </Col>
     </Row>
   )

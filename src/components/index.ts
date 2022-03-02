@@ -1,2 +1,5 @@
 export { HeaderComponent } from './header/header'
 export { LayoutComponent } from './layout/layout'
+export { InputField } from './input/input-field'
+export { DataPickerField } from './data-picker/data-picker-field'
+export { Flights } from './flights/flights'
