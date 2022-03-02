@@ -4,19 +4,22 @@ import { Button, Col, Form, Row } from 'antd'
 import { useForm } from 'react-hook-form'
 import { FlightsProps, onSubmit, schema } from './on-submit'
 import { yupResolver } from '@hookform/resolvers/yup'
-import { DataPickerField, InputField } from '../../ui-kit'
+import { DataPickerField, InputField } from '../../components/ui-kit'
 
 import styles from './flights.module.css'
 
 export const Flights = () => {
   const locations = ['Bishkek', 'London', 'Paris']
-  const { formState: { errors }, handleSubmit, control, setValue } = useForm<FlightsProps>({
+  const { formState: { errors }, handleSubmit, control, setValue, getValues } = useForm<FlightsProps>({
     resolver: yupResolver(schema)
   })
 
-  // const changeLoacation = () => {
-  //   setValue()
-  // }
+  const changeLocation = () => {
+    const from = getValues('fromLocation')
+    const to = getValues('toLocation')
+    setValue('fromLocation', to)
+    setValue('toLocation', from)
+  }
 
   return (
     <div className={styles.wrapper}>
@@ -29,13 +32,12 @@ export const Flights = () => {
               label='From:'
               placeholder='Select Loacation'
               error={errors.fromLocation}
-              size='large'
               dataList={locations}
               icon={<FontAwesomeIcon icon={faPlaneDeparture} />}
             />
           </Col>
           <Col span={1}>
-            <Button type='text'>
+            <Button type='text' onClick={changeLocation}>
               <FontAwesomeIcon icon={faArrowRightArrowLeft} />
             </Button>
           </Col>
@@ -46,7 +48,6 @@ export const Flights = () => {
               label='To:'
               placeholder='Select Loacation'
               error={errors.fromLocation}
-              size='large'
               dataList={locations}
               icon={<FontAwesomeIcon icon={faPlaneArrival} />}
             />
@@ -57,7 +58,6 @@ export const Flights = () => {
               <DataPickerField
                 name='dateFly'
                 control={control}
-                size='large'
                 placeholder='Select Date'
                 className={styles.datapicker}
                 label='Date'
@@ -71,7 +71,6 @@ export const Flights = () => {
               control={control}
               label='Passangers & Cabin class'
               error={errors.passengers}
-              size='large'
               icon={<FontAwesomeIcon icon={faUser} />}
             />
           </Col>

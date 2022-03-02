@@ -2,17 +2,19 @@ import * as yup from 'yup'
 export interface FlightsProps {
   fromLocation: string,
   toLocation: string,
-  dateFly: Date | any,
+  dateFly: Date,
   passengers: string
 }
 
-export const schema = yup.object({
-  fromLocation: yup.string().required('Fill in the field'),
-  toLocation: yup.string().required('Fill in the field'),
-  passengers: yup.string().required('Fill in the field'),
-  dateFly: yup.date().required('Fill in the field'),
-}).required();
+const requiredString = yup.string().required('This field is required');
 
-export const onSubmit = (data: FlightsProps) => {
+export const schema = yup.object({
+  fromLocation: requiredString,
+  toLocation: requiredString,
+  passengers: requiredString,
+  dateFly: yup.date().required('Fill in the field'),
+})
+
+export const onSubmit = (data: FlightsProps): void => {
   console.log(data)
 }

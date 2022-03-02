@@ -1,19 +1,12 @@
 import { Input } from 'antd';
-import { SizeType } from 'antd/lib/config-provider/SizeContext';
 import { ReactNode } from 'react';
-import { Controller, FieldError } from 'react-hook-form';
+import { Controller } from 'react-hook-form';
+import { FieldProps } from './field-types';
 
-
-
-export interface InputProps {
-  label?: string,
-  error?: FieldError,
+export type InputProps = FieldProps & {
   icon?: ReactNode,
-  dataList?: Array<string>,
+  dataList?: string[],
   control: any,
-  name: string,
-  placeholder?: string,
-  size?: SizeType
 }
 
 export const InputField = ({
@@ -23,6 +16,7 @@ export const InputField = ({
   name,
   icon,
   dataList = [],
+  size = 'large',
   ...props }: InputProps) => {
   return (
     <>
@@ -36,12 +30,15 @@ export const InputField = ({
             value={field.value}
             prefix={icon}
             list='data'
+            size='large'
             {...props}
           />
         )}
       />
+      {/* no inline styles */}
       {error && <label style={{ color: 'red' }}>{error.message}</label>}
       <datalist id='data'>
+        {/* l -???? */}
         {dataList.map((l) => <option value={l} key={l} />)}
       </datalist>
     </>

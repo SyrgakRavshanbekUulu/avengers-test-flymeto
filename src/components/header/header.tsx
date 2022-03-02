@@ -3,7 +3,7 @@ import { GlobalOutlined, NotificationOutlined, UserOutlined } from '@ant-design/
 import styles from './header.module.css'
 import Avatar from 'antd/lib/avatar/avatar'
 
-export const HeaderComponent = () => {
+export const HeaderComponent = (): JSX.Element => {
   const { Item } = Menu
   return (
     <Row justify='space-between'>
@@ -24,6 +24,7 @@ export const HeaderComponent = () => {
         </Menu>
       </Col>
       <Col>
+        {/* move to component */}
         <Space>
           <div className={styles.language}>
             <Button icon={<GlobalOutlined />} shape='circle' type='text' />
@@ -32,7 +33,7 @@ export const HeaderComponent = () => {
           <Button icon={<NotificationOutlined />} type='text' />
           <Avatar size={32} icon={<UserOutlined />} />
         </Space>
-
+        {/* no spaces */}
 
       </Col>
     </Row>

@@ -3,11 +3,11 @@ import { Flights } from '../../feature'
 import { HeaderComponent } from '../header/header'
 import styles from './layout.module.css'
 
-export const LayoutComponent = () => {
+export const LayoutComponent = (): JSX.Element => {
   const { Header, Content } = Layout
   return (
-    <Layout>
-      <Header style={{ backgroundColor: 'var(--gray)' }}>
+    <Layout className={styles.layout}>
+      <Header>
         <HeaderComponent />
       </Header>
       <Content>
