@@ -1,21 +1,9 @@
-// TODO novars
-import { Input } from 'antd';
-import { CSSProperties, ReactNode } from 'react';
-import { Controller, FieldError } from 'react-hook-form';
+import { Control, Controller, FieldValues } from 'react-hook-form';
 import { DatePicker } from 'antd'
-import { SizeType } from 'antd/lib/config-provider/SizeContext';
+import { FieldProps } from './field-types';
 
-// TODO spaces
-
-// use Types
-export interface DataPickerProps {
-  label?: string,
-  error?: FieldError,
-  control: any, // TODO remove any
-  name: string,
-  placeholder?: string,
-  size?: SizeType,
-  className?: string
+export type DataPickerProps = FieldProps & {
+  control: Control<FieldValues | any>,
 }
 
 export const DataPickerField = ({
@@ -23,7 +11,7 @@ export const DataPickerField = ({
   error,
   control,
   name,
-  size,
+  size = 'large',
   className,
   ...props
 }: DataPickerProps) => {

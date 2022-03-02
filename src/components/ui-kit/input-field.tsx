@@ -1,19 +1,12 @@
 import { Input } from 'antd';
-import { SizeType } from 'antd/lib/config-provider/SizeContext';
 import { ReactNode } from 'react';
-import { Controller, FieldError } from 'react-hook-form';
+import { Controller } from 'react-hook-form';
+import { FieldProps } from './field-types';
 
-// TODO remove spaces
-
-export interface InputProps {
-  label?: string, // duplacted types from date-picker-field.tsx
-  error?: FieldError, // duplacted types from date-picker-field.tsx
+export type InputProps = FieldProps & {
   icon?: ReactNode,
-  dataList?: Array<string>, // string[]
-  control: any, // no any
-  name: string, // duplacted types from date-picker-field.tsx
-  placeholder?: string, // duplacted types from date-picker-field.tsx
-  size?: SizeType
+  dataList?: string[],
+  control: any,
 }
 
 export const InputField = ({
@@ -23,6 +16,7 @@ export const InputField = ({
   name,
   icon,
   dataList = [],
+  size = 'large',
   ...props }: InputProps) => {
   return (
     <>
@@ -36,6 +30,7 @@ export const InputField = ({
             value={field.value}
             prefix={icon}
             list='data'
+            size='large'
             {...props}
           />
         )}

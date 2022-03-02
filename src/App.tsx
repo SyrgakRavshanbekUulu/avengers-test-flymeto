@@ -1,6 +1,6 @@
-import { LayoutComponent } from './layout/layout';
 import 'antd/dist/antd.css'
 import styles from './App.css'
+import { LayoutComponent } from './components';
 
 function App() {
   return (

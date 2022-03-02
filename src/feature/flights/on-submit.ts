@@ -2,7 +2,7 @@ import * as yup from 'yup'
 export interface FlightsProps {
   fromLocation: string,
   toLocation: string,
-  dateFly: Date | any, // todo remove any
+  dateFly: Date,
   passengers: string
 }
 
@@ -13,8 +13,8 @@ export const schema = yup.object({
   toLocation: requiredString,
   passengers: requiredString,
   dateFly: yup.date().required('Fill in the field'),
-}).required();
-// return Type
-export const onSubmit = (data: FlightsProps) => {
+})
+
+export const onSubmit = (data: FlightsProps): void => {
   console.log(data)
 }
