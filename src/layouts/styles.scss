@@ -1,0 +1,26 @@
+.layout header {
+  background: var(--gray);
+}
+
+/*
+TODO 
+- fix structure
+- noImplementicAny tsConfig.json
+ * Если мы пишем any должна быть ts ошибка не использовать any
+
+- настроить проект так, чтобы можно было юзать sass препрос.
+  * в папке common будет находится стили common/styles/global.scss который будет импортировать все стили
+  * App.tsx подключаем просто global.scss
+
+
+- Настроить aliases
+ * tsConfig.json
+ * paths: {
+   "@components": "./common/components/*"
+ }
+
+
+- CammelCase всех папок и название файлов
+
+
+*/

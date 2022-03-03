@@ -4,12 +4,12 @@ import { FieldProps } from '../field-types';
 import styles from './data-picker.module.css'
 
 export type DataPickerFieldProps = FieldProps & DatePickerProps & {
-  control: Control<FieldValues | any>,
+  control: Control<FieldValues | any>, // remove any
 }
-
+// todo return type
 export const DataPickerField = ({
   label,
-  error,
+  error, // TODO from formState
   control,
   name = '',
   size = 'large',
