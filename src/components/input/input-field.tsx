@@ -1,18 +1,12 @@
-import { Input, InputProps } from 'antd';
-import { ReactNode } from 'react';
-import { Control, Controller, FieldValues } from 'react-hook-form';
-import { FieldProps } from '../field-types';
+import { Input } from 'antd';
+import { Controller } from 'react-hook-form';
 import styles from './input-field.module.css'
+import { InputFieldProps } from './type';
 
-export interface InputFieldProps extends InputProps, FieldProps {
-  icon?: ReactNode,
-  dataList?: string[],
-  control: Control<FieldValues | any>,
-}
-
+// return type
 export const InputField = ({
   label,
-  error,
+  // error,
   control,
   name = '',
   icon,
@@ -25,18 +19,24 @@ export const InputField = ({
       <Controller
         name={name}
         control={control}
-        render={({ field }) => (
+        render={({ field, fieldState }) => {
+          console.log(fieldState.error?.message, 'pls use' );
+
+          return <>
           <Input
-            onChange={(e) => field.onChange(e)}
-            value={field.value}
-            prefix={icon}
-            list={dataList.length > 0 ? 'data' : ''}
-            size='large'
-            {...props}
-          />
-        )}
+          onChange={(e) => field.onChange(e)}
+          value={field.value}
+          prefix={icon}
+          // !!dataList.length
+          list={!!dataList.length ? 'data' : ''}
+          size='large'
+          {...props}
+        />
+        {fieldState.error?.message && <label className={styles.errorMessage}>{fieldState.error?.message}</label>}
+        </>
+        }}
       />
-      {error && <label className={styles.errorMessage}>{error.message}</label>}
+      
       <datalist id='data'>
         {dataList.map((list) => <option value={list} key={list} />)}
       </datalist>
