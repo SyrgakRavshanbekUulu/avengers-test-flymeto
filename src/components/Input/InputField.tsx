@@ -2,14 +2,15 @@ import { Input } from 'antd';
 import { Controller } from 'react-hook-form';
 import { InputFieldProps } from './type';
 
-export const InputField = ({
+export const InputField: React.FC<InputFieldProps> = ({
   label,
   control,
   name = '',
   icon,
   dataList = [],
   size = 'large',
-  ...props }: InputFieldProps): JSX.Element => {
+  ...props }) => {
+
   return (
     <>
       {label && <label>{label}</label>}

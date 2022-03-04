@@ -5,12 +5,11 @@ import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { schema } from './schema'
 import { onSubmit } from './onSubmit'
-import { FlightsProps } from '@common/types'
 import { DataPickerField, InputField } from '..'
 
 export const Flights = (): JSX.Element => {
   const locations: string[] = ['Bishkek', 'London', 'Paris']
-  const { handleSubmit, control, setValue, getValues } = useForm<FlightsProps>({
+  const { handleSubmit, control, setValue, getValues } = useForm({
     resolver: yupResolver(schema)
   })
 
@@ -23,7 +22,7 @@ export const Flights = (): JSX.Element => {
 
   return (
     <div className='flights__wrapper'>
-      <Form onFinish={handleSubmit(onSubmit)}>
+      <Form onFinish={handleSubmit(onSubmit as () => void)}>
         <Row gutter={16}>
           <Col span={5}>
             <InputField

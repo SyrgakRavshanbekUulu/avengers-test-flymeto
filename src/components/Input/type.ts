@@ -6,6 +6,5 @@ import { FieldProps } from '../../common/types';
 export type InputFieldProps = InputProps & FieldProps & {
   icon?: ReactNode,
   dataList?: string[],
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  control: Control<any>
+  control: Control;
 }
