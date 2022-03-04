@@ -1,6 +1,5 @@
 import { Col, Menu, Row } from 'antd'
-import styles from './header.module.css'
-import { Settings } from './settings'
+import { Settings } from './components/settings'
 
 export const HeaderComponent = (): JSX.Element => {
   const { Item } = Menu
@@ -10,7 +9,7 @@ export const HeaderComponent = (): JSX.Element => {
         FLYMETO
       </Col>
       <Col>
-        <Menu mode='horizontal' className={styles.menu} activeKey='flights'>
+        <Menu mode='horizontal' className='header__menu' activeKey='flights'>
           <Item key='flights'>
             Flights
           </Item>

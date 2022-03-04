@@ -1,13 +1,11 @@
 import 'antd/dist/antd.css'
-// TODO
-// import "./common/styles/global.scss"
-import styles from './App.css'
-import { LayoutComponent } from './components';
+import "./common/styles/global.scss"
+import { MainLayout } from './layouts';
 
 function App() {
   return (
-    <div className={styles.app}>
-      <LayoutComponent />
+    <div className='app'>
+      <MainLayout />
     </div>
   );
 }

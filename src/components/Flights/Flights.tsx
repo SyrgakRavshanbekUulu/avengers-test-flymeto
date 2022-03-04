@@ -2,27 +2,27 @@ import { faArrowRightArrowLeft, faPlaneArrival, faPlaneDeparture, faUser } from 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Button, Col, Form, Row } from 'antd'
 import { useForm } from 'react-hook-form'
-import { FlightsProps, onSubmit, schema } from './on-submit'
 import { yupResolver } from '@hookform/resolvers/yup'
-
-import styles from './flights.module.css'
+import { schema } from './schema'
+import { onSubmit } from './onSubmit'
+import { FlightsProps } from '@common/types'
 import { DataPickerField, InputField } from '..'
 
-export const Flights = () => {
-  const locations = ['Bishkek', 'London', 'Paris']
-  const { formState: { errors }, handleSubmit, control, setValue, getValues } = useForm<FlightsProps>({
+export const Flights = (): JSX.Element => {
+  const locations: string[] = ['Bishkek', 'London', 'Paris']
+  const { handleSubmit, control, setValue, getValues } = useForm<FlightsProps>({
     resolver: yupResolver(schema)
   })
 
-  const swapLocation = () => {
-    const from = getValues('fromLocation')
-    const to = getValues('toLocation')
+  const swapLocation = (): void => {
+    const from: string = getValues('fromLocation')
+    const to: string = getValues('toLocation')
     setValue('fromLocation', to, { shouldValidate: true })
     setValue('toLocation', from, { shouldValidate: true })
   }
 
   return (
-    <div className={styles.wrapper}>
+    <div className='flights__wrapper'>
       <Form onFinish={handleSubmit(onSubmit)}>
         <Row gutter={16}>
           <Col span={5}>
@@ -31,7 +31,6 @@ export const Flights = () => {
               control={control}
               label='From:'
               placeholder='Select Loacation'
-              error={errors.fromLocation}
               dataList={locations}
               icon={<FontAwesomeIcon icon={faPlaneDeparture} />}
             />
@@ -49,7 +48,6 @@ export const Flights = () => {
               control={control}
               label='To:'
               placeholder='Select Loacation'
-              error={errors.toLocation}
               dataList={locations}
               icon={<FontAwesomeIcon icon={faPlaneArrival} />}
             />
@@ -60,9 +58,8 @@ export const Flights = () => {
               name='dateFly'
               control={control}
               placeholder='Select Date'
-              className={styles.datapicker}
+              className='flights__datePicker'
               label='Date'
-              error={errors.dateFly}
             />
           </Col>
 
@@ -71,7 +68,6 @@ export const Flights = () => {
               name='passengers'
               control={control}
               label='Passangers & Cabin class'
-              error={errors.passengers}
               icon={<FontAwesomeIcon icon={faUser} />}
             />
           </Col>
