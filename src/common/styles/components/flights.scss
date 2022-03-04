@@ -1,0 +1,19 @@
+.flights__wrapper {
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  background-color: var(--gray);
+  padding-top: 120px;
+
+  form {
+    margin: 0 10px;
+  }
+
+  button {
+    margin-top: 25px;
+  }
+}
+
+.flights__datePicker {
+  width: 100%;
+}
